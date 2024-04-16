@@ -18,6 +18,12 @@ export default function MemorizePage() {
   const [hiddenWords, setHiddenWords] = useState<number[][]>([]);
 
   useEffect(() => {
+    if (text.length === 0) {
+      router.push("/");
+    }
+  }, [text]);
+
+  useEffect(() => {
     const newHiddenWords = text.map((line) => {
       if (level === 1) return [];
 
@@ -52,7 +58,7 @@ export default function MemorizePage() {
         <h1 className="text-4xl font-semibold tracking-tight">level {level}</h1>
         <p className="text-secondary-foreground">{describeLevel(level)}</p>
       </span>
-      <ScrollArea className="h-[10rem] w-full w-xl">
+      <ScrollArea className="h-[17rem] w-full w-xl">
         <div className="flex w-full flex-col items-center justify-center gap-2">
           {text.map((line, i) => (
             <div key={i} className="flex flex-row items-center gap-2">
