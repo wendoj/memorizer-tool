@@ -48,10 +48,10 @@ export default function MemorizePage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center gap-10 p-4">
       <span className="flex flex-col items-center space-y-4 text-center">
-        <h1 className="text-4xl font-semibold">level {level}</h1>
+        <h1 className="text-4xl font-semibold tracking-tight">level {level}</h1>
         <p className="text-secondary-foreground">{describeLevel(level)}</p>
       </span>
-      <ScrollArea className="h-[20rem] w-full max-w-xl">
+      <ScrollArea className="max-h-[20rem] w-full max-w-xl">
         <div className="flex w-full flex-col items-center justify-center gap-2">
           {text.map((line, i) => (
             <div key={i} className="flex flex-row items-center gap-2">

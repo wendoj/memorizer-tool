@@ -22,9 +22,11 @@ export default function HomePage() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-4 p-4">
       <span className="flex flex-col items-center text-center">
-        <h1 className="text-3xl font-semibold">memorizer-tool</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">
+          memorizer-tool
+        </h1>
         <p className="text-secondary-foreground">
           enter text you want to memorize
         </p>
