@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 import localFont from "next/font/local";
 
 const overusedGrotesk = localFont({
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="p-8">
+    <html lang="en">
       <body className={`${overusedGrotesk.className}`}>
         {children}
         <Toaster />

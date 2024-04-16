@@ -2,14 +2,23 @@
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { splitSentence } from "@/lib/splitSentence";
+import { useSessionStorage } from "react-storage-complete";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
+  const [text, setText] = useSessionStorage<string[][]>("text", []);
+  const router = useRouter();
+
   function handleFormEvent(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const text = (document.getElementById("meemaw") as HTMLTextAreaElement).value;
+    const sentence = (document.getElementById("meemaw") as HTMLTextAreaElement)
+      .value;
 
-    console.log(text);
+    if (sentence) {
+      setText(splitSentence(sentence));
+      router.push("/memorize");
+    }
   }
 
   return (
@@ -20,7 +29,10 @@ export default function HomePage() {
           enter text you want to memorize
         </p>
       </span>
-      <form className="grid w-full max-w-lg min-h-[15rem] gap-2" onSubmit={handleFormEvent}>
+      <form
+        className="grid min-h-[20rem] w-full max-w-lg gap-2"
+        onSubmit={handleFormEvent}
+      >
         <Textarea id="meemaw" placeholder="enter text here" />
         <Button>start memorizing!</Button>
       </form>
