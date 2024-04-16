@@ -13,34 +13,35 @@ export default function MemorizePage() {
   const [text, setText] = useSessionStorage<string[][]>(
     "text",
     [],
-  ) as unknown as [string[][], (value: string[][]) => void];
+  ) as unknown as [string[][], (value: string[][][]) => void];
   const [level, setLevel] = useState<number>(1);
-  const [hiddenWords, setHiddenWords] = useState<string[][]>([]);
+  const [hiddenWords, setHiddenWords] = useState<number[][]>([]);
 
   useEffect(() => {
     const newHiddenWords = text.map((line) => {
       if (level === 1) return [];
 
-      const shuffledLine = shuffle(line);
-      return shuffledLine.slice(0, level - 1).map((word) => word);
+      const shuffledLine = shuffle(line.map((_, wordIndex) => wordIndex));
+      return shuffledLine.slice(0, level - 1);
     });
     setHiddenWords(newHiddenWords);
   }, [level, text]);
 
-  function revealWord(word: string) {
-    const newHiddenWords = hiddenWords.map((line) =>
-      line.filter((w) => w !== word),
+  function revealWord(lineIndex: number, wordIndex: number) {
+    // Remove the word index from the hidden words array
+    const newHiddenWords = hiddenWords.slice();
+    newHiddenWords[lineIndex] = newHiddenWords[lineIndex]!.filter(
+      (hiddenWordIndex) => hiddenWordIndex !== wordIndex
     );
-
     setHiddenWords(newHiddenWords);
   }
 
   function reshuffleWords() {
-    const newHiddenWords = text.map((line) => {
+    const newHiddenWords = text.map((line, lineIndex) => {
       if (level === 1) return [];
 
-      const shuffledLine = shuffle(line);
-      return shuffledLine.slice(0, level - 1).map((word) => word);
+      const shuffledLine = shuffle(line.map((_, wordIndex) => wordIndex));
+      return shuffledLine.slice(0, level - 1);
     });
     setHiddenWords(newHiddenWords);
   }
@@ -51,17 +52,17 @@ export default function MemorizePage() {
         <h1 className="text-4xl font-semibold tracking-tight">level {level}</h1>
         <p className="text-secondary-foreground">{describeLevel(level)}</p>
       </span>
-      <ScrollArea className="max-h-[20rem] w-full max-w-xl">
+      <ScrollArea className="h-[10rem] w-full w-xl">
         <div className="flex w-full flex-col items-center justify-center gap-2">
           {text.map((line, i) => (
             <div key={i} className="flex flex-row items-center gap-2">
               {line.map((word, j) => (
                 <div key={j} className="flex flex-row items-center gap-1">
-                  {hiddenWords[i]?.includes(word) ? (
+                  {hiddenWords[i]?.includes(j) ? (
                     <Button
                       className="text-background hover:text-accent"
                       variant="outline"
-                      onClick={() => revealWord(word)}
+                      onClick={() => revealWord(i, j)}
                     >
                       <span>{word}</span>
                     </Button>
@@ -76,7 +77,7 @@ export default function MemorizePage() {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <footer className="fixed bottom-0 flex flex-row items-center gap-2 rounded-md p-[5rem] backdrop-blur">
+      <footer className="fixed bottom-0 flex flex-row items-center gap-2 rounded-md p-8 xl:p-[5rem] backdrop-blur">
         <Button
           variant="outline"
           size="icon"
