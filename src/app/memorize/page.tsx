@@ -58,7 +58,7 @@ export default function MemorizePage() {
         <h1 className="text-4xl font-semibold tracking-tight">level {level}</h1>
         <p className="text-secondary-foreground">{describeLevel(level)}</p>
       </span>
-      <ScrollArea className="h-[17rem] w-full w-xl">
+      <ScrollArea className="h-[17rem] xl:h-[20rem] 2xl:h-[25rem] w-full w-xl">
         <div className="flex w-full flex-col items-center justify-center gap-2">
           {text.map((line, i) => (
             <div key={i} className="flex flex-row items-center gap-2">
@@ -83,7 +83,7 @@ export default function MemorizePage() {
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <footer className="fixed bottom-0 flex flex-row items-center gap-2 rounded-md p-8 xl:p-[5rem] backdrop-blur">
+      <footer className="fixed bottom-0 flex flex-row items-center gap-2 rounded-md p-8 lg:p-12 rounded-md backdrop-blur">
         <Button
           variant="outline"
           size="icon"
