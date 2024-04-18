@@ -1,19 +1,10 @@
-# Create T3 App
+# ✍️ memorizer-tool
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+A simple tool to help you effectively memorize lots of text. Bootstrapped with [create-t3-app](https://create.t3.gg/).
 
-## What's next? How do I make an app with this?
+[Website Preview](https://github.com/wendoj/memorizer-tool/assets/77996774/6a1f25ba-47e1-4007-8aa9-0bc31f96d49e)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+[🔗 Link to demo](https://memorizer-tool.vercel.app/)
 
 ## Learn More
 
