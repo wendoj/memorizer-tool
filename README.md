@@ -2,7 +2,7 @@
 
 A simple tool to help you effectively memorize lots of text. Bootstrapped with [create-t3-app](https://create.t3.gg/).
 
-[Website Preview](https://github.com/wendoj/memorizer-tool/assets/77996774/6a1f25ba-47e1-4007-8aa9-0bc31f96d49e)
+![Website Preview](https://github.com/wendoj/memorizer-tool/assets/77996774/6a1f25ba-47e1-4007-8aa9-0bc31f96d49e)
 
 [🔗 Link to demo](https://memorizer-tool.vercel.app/)
 
