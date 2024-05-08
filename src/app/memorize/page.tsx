@@ -18,7 +18,7 @@ export default function MemorizePage() {
   const [mode, setMode] = useSessionStorage<Mode>("mode", "");
 
   useEffect(() => {
-    if (text.length === 0) {
+    if (text.length === 0 || mode === "") {
       router.push("/");
     }
   }, [router, text]);

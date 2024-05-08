@@ -49,17 +49,23 @@ export default function HomePage() {
         </p>
       </span>
       <form
-        className="grid min-h-[20rem] w-full max-w-lg gap-2"
+        className="flex w-full max-w-lg flex-col gap-2"
         onSubmit={handleFormEvent}
       >
-        <Textarea id="textarea" placeholder="enter text here" />
-        <div className="flex flex-row items-center gap-1.5 self-start">
-          <Button type="submit" className="w-full">
+        <Textarea
+          className="min-h-[14rem]"
+          id="textarea"
+          placeholder="enter text here"
+        />
+        <div className="flex flex-row items-center">
+          <Button type="submit" className="mr-1 w-full">
             memorize text
           </Button>
           <Dialog>
             <DialogTrigger>
-              <Button variant="secondary">choose mode</Button>
+              <Button variant="secondary" type="button">
+                choose mode
+              </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
